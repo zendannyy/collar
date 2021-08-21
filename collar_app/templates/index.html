@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Collar</title>
+</head>
+
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="headers">
+        <h2>Collar</h2>
+        <a href="/">Home</a> | <a href="/search">Search</a> | <a href="/login">Account</a>
+    </div>
+    <div class="reg">
+        <form action="/register" method="POST">
+               {% csrf_token %}
+               <h2>Registration</h2>
+              
+               <section>
+               <div class="container">
+                   <div class="labels">
+                       <label>Username: <input type="text" name="user_name"> </label>
+                       <label>Email Address <input type="text" name="email"> </label>
+                       <label>Password<input type="password" name="password"></label>
+                       <label>Confirm Password<input type="password" name="confirm_password"></label>
+                       <button>Register</button>
+                   </div>
+               </div>
+               </section>
+    
+</body>
+</html>

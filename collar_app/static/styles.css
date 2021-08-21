@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+
+.headers{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+.reg{
+    background-color: #3131d8;
+    border: 8px solid currentcolor;
+    padding: 25px;  
+
+}
+
+.container{
+    text-align:center;
+
+}
+
