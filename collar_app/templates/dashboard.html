@@ -9,8 +9,72 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dashboard</title>
 </head>
 <body>
-    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="headers">
+        <h2>Collar</h2>
+        <a href="/">Home</a> | <a href="/#">Search</a> | <a href="/login">Account</a>
+    </div>
+    <div class="welcome">
+        <h4>Welcome {{ logged_user.user_name }}!</h4>
+            <a href="/logout">Log Out </a>
+            
+        </div>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li {% if message.tags %}
+                {% endif %}> {{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+    <div class="search_bar" style="margin-top: 70px;">
+                
+        <form action="/create" method="POST">   
+            {% csrf_token %}
+        <label>Enter Job/Service Name </label> <input type="text" name="search">
+        <button type="submit">My Jobs</button>
+        </form>
+    </div>
+    <div class="jobs">
+        <h3>Your jobs</h3>
+        <form action="/create" method="POST">
+            {% csrf_token %}
+            <section>
+                  <table class="table-dark">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Job Names</th>
+                          <th>Duration</th>
+                          <th>Date Added</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for job in jobs %}
+                      <!-- from db -->
+                      <tr>
+                          <!-- <td>{{ user.id }}</td> -->
+                          <td>{{ job.worker.user_name }}</td>
+                          <td>{{ job.job }}</td>
+                          <td>{{ job.duration }}</td>         
+                          <td><a href="/{{ user.id }}">{{ user.user_name }}</a></td>
+                          <td>{{ job.created_at }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+            </section>
+    </div>
+
 </body>
 </html>
