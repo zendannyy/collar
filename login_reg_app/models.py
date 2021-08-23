@@ -106,6 +106,8 @@ class User(models.Model):
 	# max_length to 255, since it could get cut off and therefore not compare the same hash
     password = models.CharField(max_length=255)
 
+    isWorker = models.BooleanField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

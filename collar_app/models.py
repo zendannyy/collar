@@ -16,9 +16,9 @@ class JobManager(models.Manager):
         return errors
 
 
-class JOB(models.Model):
+class Job(models.Model):
     """related_name is from views create function"""
-    job_name = models.TextField(default='none')
+    name = models.TextField(default='none')
     duration = models.TextField(default='none')
     worker = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
