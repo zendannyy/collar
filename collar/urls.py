@@ -18,5 +18,7 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    # path('admin/', admin.site.urls), # allows us to modify database data under localhost/admin
     path('', include('collar_app.urls')),
+    path('signin/', include('login_reg_app.urls'))
 ]

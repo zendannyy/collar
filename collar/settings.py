@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'collar_app',
+    'login_reg_app'
 ]
 
 MIDDLEWARE = [
