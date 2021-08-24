@@ -6,7 +6,8 @@ import bcrypt
 
 # Login page
 def login(request):
-    # if a user is logged in prevent relogin from a different user because we do not want to overwrite the session data. User needs to log out first then they can go to login.html to login/register
+    """if a user is logged in prevent relogin from a different user because we do not want to overwrite the session data.
+    User needs to log out first then they can go to login.html to login/register"""
     try: 
         if request.session['userid']:
             context = {"User": User.objects.get(id=request.session['userid'])}
@@ -17,7 +18,8 @@ def login(request):
 
 # Register page
 def register(request):
-    # if a user is logged in prevent relogin from a different user because we do not want to overwrite the session data. User needs to log out first then they can go to login.html to login/register
+    """if a user is logged in prevent relogin from a different user because we do not want to overwrite the session data.
+    User needs to log out first then they can go to login.html to login/register"""
     try: 
         if request.session['userid']:
             context = {"User": User.objects.get(id=request.session['userid'])}
