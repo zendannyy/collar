@@ -66,8 +66,8 @@ def logining(request):
 
 # POST
 def logout(request):
-    del request.session['userid']
-    return redirect('/signin/login')
+    request.session.flush()
+    return redirect('/')
     
 
 

@@ -12,6 +12,7 @@
     <title>Dashboard</title>
 </head>
 <body>
+    {% include "partials/navbar.html" %}
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -19,13 +20,13 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <div class="headers">
+    <!-- <div class="headers">
         <h2>Collar</h2>
         <a href="/">Home</a> | <a href="/#">Search</a> | <a href="/login">Account</a>
-    </div>
+    </div> -->
     <div class="welcome">
         <h4>Welcome {{ logged_user.first_name }}!</h4>
-            <a href="/logout">Log Out </a>
+            <!-- <a href="/logout">Log Out </a> -->
             
         </div>
         {% if messages %}

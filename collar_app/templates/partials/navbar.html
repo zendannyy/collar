@@ -8,23 +8,26 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
         <ul class="navbar-nav me-auto ">
           <li class="nav-item">
-            <a class="nav-link active" href="">New Job
+            <a class="nav-link active" href="">Create New Job
               <span class="visually-hidden"></span>
             </a>
           </li>
           {% if 'userid' in request.session %}
           <li class="nav-item">
-            <a class="nav-link" href="">My Account</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Dashboard</a>
+            <a class="nav-link" href="/dash">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signin:logout' %}">Sign Out</a>
+            <a class="nav-link" href="">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signin/logout">Log Out</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signin:login' %}">Sign In</a>
+            <a class="nav-link" href="signin/login">Sign In</a>
           </li>
           {% endif %}
         </ul>
