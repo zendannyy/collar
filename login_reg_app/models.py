@@ -7,9 +7,7 @@ class UserManager(models.Manager):
         errors = {}
         # run all the functions and sum all the errors into one dictionary
         # The keys in 'errors' need to be empty if no errors
-        u = self.reg_user_name(postData)
-        if len(u) > 0:
-            errors["user_name"] = u
+
         f = self.reg_first_name(postData)
         if len(f) > 0:
             errors["first_name"] = f
@@ -28,13 +26,13 @@ class UserManager(models.Manager):
         return errors
 
     # these are broken out seperately for ajax calls:
-    def reg_user_name(self, postData):
-        error = ''
-        if len(postData['user_name']) < 3:
-            error = "Username should be at least 3 characters"
-        if not postData['user_name'].isalpha():
-            error = "Username should only be alphabetical characters"
-        return error
+    # def reg_user_name(self, postData):
+    #     error = ''
+    #     if len(postData['user_name']) < 3:
+    #         error = "Username should be at least 3 characters"
+    #     if not postData['user_name'].isalpha():
+    #         error = "Username should only be alphabetical characters"
+    #     return error
     
     def reg_first_name(self, postData):
         error = ''
@@ -69,50 +67,24 @@ class UserManager(models.Manager):
         if postData['confirm_PW'] != postData['password']:
             error = "Passwords need to match."
         return error
-    
- 
 
-    # def login_validator(self, post_data, request):
-    #     """validator for username nas pw
-    #     request is for passing in session"""
-    #     errors = {}
-    #     if len(post_data['user_name']) < 3:
-    #         errors["user_name"] = "Username should be at least 3 characters"
-    #     if not post_data['user_name'].isalpha():
-    #         errors["user_name"] = "Username should only be alphabetical characters"
-    #         request.session['user_name'] = ""
-    #     else:
-    #         login_user = post_data['user_name'].lower()
-    #         user = User.objects.filter(user_name=login_user)
-    #         if user:
-    #             logged_user = user[0]
-    #             print(logged_user)
-    #             if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
-    #                 request.session['userid'] = logged_user.id
-    #             else:
-    #                 errors['pass'] = "Incorrect password, please try again."
-    #         else:
-    #             request.session['user_name'] = ""
-    #             errors['user_name'] = "Username doesn't exist. Please register first."
-    #     return errors
 
 
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
 
-    user_name = models.CharField(max_length=20)
+    # user_name = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
 	# max_length to 255, since it could get cut off and therefore not compare the same hash
     password = models.CharField(max_length=255)
 
-    isWorker = models.BooleanField()
+    isWorker = models.BooleanField(default=False, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     #addresses = list of SERVICE_ADDRESS'es that the user can order service on
-    #added_items = list of items and quantities the user added to a quote
     #quotes = list of quotes the user created
 
     objects = UserManager()
