@@ -15,7 +15,10 @@ def index(request):
 def dash(request):
 	"""dashboard logged in user sees"""
 	try: #check if customer is logged in. This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page.
-		context = {"logged_user": User.objects.get(id=request.session['userid'])}
+		context = {
+			"logged_user": User.objects.get(id=request.session['userid']),
+			"jobs": Job.objects.all()
+			}
 		return render(request, 'dashboard.html', context)
 	except:
 		return redirect('/signin/login')

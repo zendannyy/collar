@@ -51,9 +51,9 @@
         <form action="/create" method="POST">
             {% csrf_token %}
             <section>
-                  <table class="table-dark">
+                  <table class=" table table-dark">
                   <thead>
-                      <tr>
+                      <tr class="table text-light">
                           <th>Name</th>
                           <th>Job Names</th>
                           <th>Duration</th>
@@ -63,12 +63,12 @@
                   <tbody>
                       {% for job in jobs %}
                       <!-- from db -->
-                      <tr>
+                      <tr class="table-primary">
                           <!-- <td>{{ user.id }}</td> -->
-                          <td>{{ job.worker.user_name }}</td>
-                          <td>{{ job.job }}</td>
+                          <td scope="row">{{ job.worker.first_name }}</td>
+                          <td>{{ job.name }}</td>
                           <td>{{ job.duration }}</td>         
-                          <td><a href="/{{ user.id }}">{{ user.user_name }}</a></td>
+                          <!-- <td><a href="/{{ user.id }}">{{ logged_user.user_name }}</a></td> -->
                           <td>{{ job.created_at }}</td>
                       </tr>
                       {% endfor %}
