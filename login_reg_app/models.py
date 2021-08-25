@@ -79,13 +79,12 @@ class User(models.Model):
 	# max_length to 255, since it could get cut off and therefore not compare the same hash
     password = models.CharField(max_length=255)
 
-    isWorker = models.BooleanField()
+    isWorker = models.BooleanField(default=False, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     #addresses = list of SERVICE_ADDRESS'es that the user can order service on
-    #added_items = list of items and quantities the user added to a quote
     #quotes = list of quotes the user created
 
     objects = UserManager()
