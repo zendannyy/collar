@@ -84,9 +84,6 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    #addresses = list of SERVICE_ADDRESS'es that the user can order service on
-    #quotes = list of quotes the user created
-
     objects = UserManager()
 
     def __str__(self):

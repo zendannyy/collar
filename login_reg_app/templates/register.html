@@ -43,18 +43,12 @@
                             </div>
                             <!-- state -->
                             <div class="form-group row ">
-                                <label for="state" class=" col-sm-5 col-form-label p-1">State:</label>
+                                <label for="selectAccountType" class=" col-sm-5 col-form-label p-1">Account Type:</label>
                                 <div class="col-sm-7 p-1">
-                                    <input name="state" type="text" id="state" class="form-control">
-                                    <div id="stateMsg"></div>
-                                </div>
-                            </div>
-                            <!-- zipcode -->
-                            <div class="form-group row">
-                                <label for="zipcode" class=" col-sm-5 col-form-label p-1">Zipcode:</label>
-                                <div class="col-sm-7 p-1">
-                                    <input name="zipcode" type="text" id="zipcode" class="form-control">
-                                    <div id="zipcodeMsg"></div>
+                                    <select name="selectAccountType" type="text" id="selectAccountType" class="form-select">
+                                        <option value='False' >Looking for Service</option>
+                                        <option value='True' >Offering Service</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -66,6 +60,7 @@
                                     <div id="emailMsg"></div>
                                 </div>
                             </div>
+
                             <!-- confirm_Email -->
                             <!-- <div class="form-group row">
                                 <label for="confirm_Email" class=" col-sm-5 col-form-label p-1">Confirm Email:</label>
