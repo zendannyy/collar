@@ -35,6 +35,12 @@ def create(request):
 		return redirect('/signin/login') # send to login page if not loggedin
 	
 
+def logout(request):
+	"""logout session, back to home page"""
+	request.session.flush()
+	print(request.session)
+	return redirect('/')
+
 
 
 def destroy(request):
