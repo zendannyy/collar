@@ -15,12 +15,20 @@ class JobManager(models.Manager):
             errors["duration"] = "Duration estimate must be provided!"
         return errors
 
+class Category(models.Model):
+    name = models.TextField(default='none')
+    # jobs = the jobs that are in this category
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Job(models.Model):
     """related_name is from views create function"""
     name = models.TextField(default='none')
     duration = models.TextField(default='none')
     worker = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='jobs', on_delete=models.CASCADE, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
