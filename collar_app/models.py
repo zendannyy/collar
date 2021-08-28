@@ -17,6 +17,7 @@ class JobManager(models.Manager):
 
 class Category(models.Model):
     name = models.CharField(max_length=45, default='none')
+    description = models.TextField(default='none', null=True)
     # jobs = the jobs that are in this category
 
     created_at = models.DateTimeField(auto_now_add=True)
