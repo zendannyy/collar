@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
-from .models import Job
+from .models import Category, Job
 from login_reg_app.models import User
 import bcrypt
 
@@ -14,7 +14,8 @@ def market(request):
 	try: #check if customer is logged in. This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page.
 		context = {
 			"logged_user": User.objects.get(id=request.session['userid']),
-			"jobs": Job.objects.all()
+			"jobs": Job.objects.all(),
+			"categories": Category.objects.all(),
 			}
 		return render(request, 'marketplace.html', context)
 	except:
