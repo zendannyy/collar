@@ -93,4 +93,4 @@ class User(models.Model):
         else:
             isW = 'Customer'
 
-        return f"{isW}:  {self.first_name}, {self.last_name}"
+        return f"{self.id}-{isW}:  {self.first_name}, {self.last_name}"
