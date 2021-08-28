@@ -7,9 +7,6 @@
 <body>
     {% include "partials/navbar.html" %}
     <div class="container-fluid p-2">
-        <div class="welcome">
-            <h4>Welcome {{ logged_user.first_name }}!</h4>   
-        </div>
         <div class="jobs">
             <h3>Your jobs</h3>
                 {% csrf_token %}
