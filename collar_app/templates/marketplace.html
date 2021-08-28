@@ -15,7 +15,7 @@
     
         <div id="category_cards" class="row d-flex flex-wrap g-sm-5 text-center justify-content-center">
         {% for category in categories %}
-            <div class="col-auto">
+            <a class="col-auto" href="/market/{{category.id}}" style="text-decoration: none">
                 <div class="card text-white bg-success mb-3" style="max-width: 20rem; min-width: 20rem">
                     <div class="card-header"><h3 class="m-1">{{ category.name}}</h3></div>
                     <div class="card-body bg-info" style="min-height: 12rem">
@@ -23,7 +23,7 @@
                         <p class="card-text">{{ category.description }}</p>
                     </div>
                 </div>
-            </div>
+            </a>
         {% endfor %}
         </div>
     </div>
