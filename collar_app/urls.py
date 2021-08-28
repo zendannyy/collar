@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index),
 	path('dash', views.dash),
 	path('market', views.market),
+	path('market/<int:categoryID>', views.marketCategory),
 	path('edit/<int:id>', views.edit),
     path('logout', views.logout),
 	path('create', views.create),

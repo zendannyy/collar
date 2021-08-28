@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "partials/header.html" %}
+    <title>Marketplace: {{ jobs.0.category.name}}</title>
+</head>
+<body>
+    {% include "partials/navbar.html" %}
+    <div class="container-fluid p-2">
+        <div class="row text-center p-2">
+            <h3>{{ jobs.0.category.name}}</h3>
+                
+        </div>
+        <div id="market_table">
+            {% include "partials/market_table.html" %}
+            <script>
+                $('#table_header').removeClass("table-primary");
+                $('#table_header').addClass("table-success");
+                $('#category_col').remove();
+                // {% for job in jobs %}
+                    $('#category_rows').remove();
+                // {% endfor %}
+            </script>
+        </div>
+    </div>
+</body>
+</html>
