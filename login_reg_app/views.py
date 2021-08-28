@@ -42,10 +42,9 @@ def registering(request):
                 first_name = request.POST['first_name'],
                 last_name = request.POST['last_name'],
                 email = request.POST['email'].lower(), #email not case sensitive
-                isWorker = bool(request.POST['selectAccountType']),
+                isWorker =request.POST['selectAccountType'],
                 password = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
             )
-            print(request.POST['selectAccountType'])
             request.session['userid'] = User.objects.last().id
             return redirect('/dash')
     return redirect('/signin/register')
