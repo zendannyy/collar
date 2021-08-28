@@ -36,5 +36,5 @@ class Job(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.category.name}: {self.name}"
+        return f"{self.worker.first_name}:  {self.name}"
 

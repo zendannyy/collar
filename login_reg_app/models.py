@@ -87,4 +87,10 @@ class User(models.Model):
     objects = UserManager()
 
     def __str__(self):
-        return f"{self.first_name}, {self.last_name}"
+        isW = ''
+        if self.isWorker:
+            isW = 'Worker'
+        else:
+            isW = 'Customer'
+
+        return f"{isW}:  {self.first_name}, {self.last_name}"
