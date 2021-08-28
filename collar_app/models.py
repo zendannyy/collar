@@ -16,7 +16,7 @@ class JobManager(models.Manager):
         return errors
 
 class Category(models.Model):
-    name = models.TextField(default='none')
+    name = models.CharField(max_length=45, default='none')
     # jobs = the jobs that are in this category
 
     created_at = models.DateTimeField(auto_now_add=True)
