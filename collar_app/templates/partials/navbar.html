@@ -2,7 +2,9 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">
+        The Collar App
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,19 +13,21 @@
         <ul class="navbar-nav me-auto">
           {% if 'userid' in request.session %}
           <li class="nav-item">
-            <a class="nav-link active" href="">Create New Job
+            <a class="nav-link active" href="/market">Marketplace
               <span class="visually-hidden"></span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
+          {% if request.session.isworker == True %}
           <li class="nav-item">
             <a class="nav-link" href="/dash">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Account</a>
+            <a class="nav-link" href="/create">Create New Job</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account">Account</a>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="/signin/logout">Log Out</a>
           </li>

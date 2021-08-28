@@ -16,7 +16,7 @@ def market(request):
 			"logged_user": User.objects.get(id=request.session['userid']),
 			"jobs": Job.objects.all()
 			}
-		return render(request, 'market.html', context)
+		return render(request, 'marketplace.html', context)
 	except:
 		return redirect('/signin/login')
 
@@ -30,7 +30,7 @@ def dash(request):
 		if request.session['isworker']: # this page only for worker users
 			return render(request, 'dashboard.html', context)
 		else:
-			return render(request, 'marketplace.html', context)
+			return redirect('/market')
 	except:
 		return redirect('/signin/login')
 
@@ -69,7 +69,6 @@ def edit(request):
 def logout(request):
 	"""logout session, back to home page"""
 	request.session.flush()
-	print(request.session)
 	return redirect('/signin/logout')
 
 
