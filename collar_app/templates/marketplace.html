@@ -7,12 +7,14 @@
 <body>
     {% include "partials/navbar.html" %}
     <div class="container-fluid p-2">
-        <div class="jobs">
-            <h3>Your jobs</h3>
-                {% csrf_token %}
-                <div id="market_table">
-                    {% include "partials/market_table.html" %}
-                </div>
+        <div class="row text-center p-2">
+            <h3>Check out these services!</h3>
+                
+        </div>
+        <div class="row">
+            <div id="market_table">
+                {% include "partials/market_table.html" %}
+            </div>
         </div>
     </div>
 </body>
