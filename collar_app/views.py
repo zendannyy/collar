@@ -91,6 +91,19 @@ def create(request):
 	except:
 		return redirect('/signin/login') # send to login page if not loggedin
 	
+
+def account(request):
+	"""account profile from form in navbar"""
+	try: #check if customer is logged in. 
+		context = {
+			"logged_user": User.objects.get(id=request.session['userid']),
+			"jobs": Job.objects.all(),
+			}
+		return render(request, 'account.html', context)
+	except:
+		return redirect('/signin/login')
+
+
 def edit(request):
 	try: # check if user logged in
 		context = {
