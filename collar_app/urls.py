@@ -8,6 +8,8 @@ urlpatterns = [
 	path('dash', views.dash),
 	path('market', views.market),
 	path('market/<int:categoryID>', views.marketCategory),
+	path('market/search', views.marketSearch),
+	path('market/search/ajax', views.marketSearchAjax),
 	path('edit/<int:id>', views.edit),
     path('logout', views.logout),
 	path('create', views.create),

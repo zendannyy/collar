@@ -1,6 +1,6 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         {% if 'userid' in request.session %}
           Welcome {{ logged_user.first_name }}!
         {% else %}
@@ -34,8 +34,9 @@
             <a class="nav-link" href="/signin/logout">Log Out</a>
           </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Enter Job/Service Name">
+      <form class="d-flex"action="/market/search" method="POST" id="searchForm">
+        {% csrf_token %}
+        <input class="form-control me-sm-2" type="text" placeholder="Enter Job/Service Name" name="searchMarket" id="searchMarket">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
           {% else %}

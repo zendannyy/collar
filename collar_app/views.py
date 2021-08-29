@@ -23,7 +23,7 @@ def market(request):
 
 def marketCategory(request, categoryID):
 	"""market catgegory that was clicked"""
-	try: #check if customer is logged in. This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page.
+	try: #check if customer is logged in.
 		context = {
 			"logged_user": User.objects.get(id=request.session['userid']),
 			"jobs": Job.objects.filter(category=Category.objects.get(id=categoryID)),
@@ -31,6 +31,33 @@ def marketCategory(request, categoryID):
 		return render(request, 'marketplaceCategory.html', context)
 	except:
 		return redirect('/signin/login')
+
+def marketSearch(request):
+	"""market search from search form in navbar"""
+	if request.method == 'POST':
+		try: #check if customer is logged in. 
+			context = {
+				"logged_user": User.objects.get(id=request.session['userid']),
+				"jobs": Job.objects.filter(name__icontains=request.POST['searchMarket']),
+				}
+			return render(request, 'marketplaceSearch.html', context)
+		except:
+			return redirect('/signin/login')
+	return redirect('/')
+
+# AJAX
+def marketSearchAjax(request):
+	"""ajax market search from search form in navbar"""
+	if request.method == 'POST':
+		try: #check if customer is logged in. 
+			context = {
+				"logged_user": User.objects.get(id=request.session['userid']),
+				"jobs": Job.objects.filter(name__icontains=request.POST['searchMarket']),
+				}
+			return render(request, 'partials/market_table.html', context)
+		except:
+			return redirect('/signin/login')
+	return redirect('/')
 
 def dash(request):
 	"""dashboard: only logged in worker user sees"""
