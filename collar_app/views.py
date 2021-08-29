@@ -60,8 +60,10 @@ def marketSearchAjax(request):
 	return redirect('/')
 
 def dash(request):
-	"""dashboard: only logged in worker user sees"""
-	try: #check if customer is logged in. This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page.
+	"""dashboard: only logged in worker user sees
+	check if customer is logged in. 
+	This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page."""
+	try: 
 		context = {
 			"logged_user": User.objects.get(id=request.session['userid']),
 			"jobs": Job.objects.all()
@@ -83,7 +85,7 @@ def create(request):
 			'jobs': Job.objects.all(),
 		}
 		if request.session['isworker']: # this page only for worker users
-			return render(request, 'create.html', context)
+			return render(request, 'dashboard.html', context)
 		else:
 			return render(request, 'marketplace.html', context)
 	except:
