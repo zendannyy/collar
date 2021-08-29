@@ -1,20 +1,18 @@
-<table class=" table table-dark">
+<table class=" table table-dark table-hover">
     <thead>
-        <tr class="table table-primary">
-            <th>Name</th>
-            <th>Category</th>
-            <th>Job Names</th>
+        <tr class="table table-primary" id="table_header">
+            <th>Offered By</th>
+            <th id="category_col">Category</th>
+            <th>Job Name</th>
             <th>Duration</th>
             <th>Date Added</th>
         </tr>
     </thead>
     <tbody>
         {% for job in jobs %}
-        <!-- from db -->
         <tr class="table-light">
-            <!-- <td>{{ user.id }}</td> -->
             <td scope="row">{{ job.worker.first_name }}</td>
-            <td>{{ job.category.name }}</td>
+            <td  id="category_rows">{{ job.category.name }}</td>
             <td>{{ job.name }}</td>
             <td>{{ job.duration }}</td>         
             <!-- <td><a href="/{{ user.id }}">{{ logged_user.user_name }}</a></td> -->

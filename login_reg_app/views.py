@@ -10,7 +10,6 @@ def login(request):
     User needs to log out first then they can go to login.html to login/register"""
     try: 
         if request.session['userid']:
-            context = {"User": User.objects.get(id=request.session['userid'])}
             print(request.session['userid'])
             return redirect('/dash')
     except:
@@ -22,7 +21,6 @@ def register(request):
     User needs to log out first then they can go to login.html to login/register"""
     try: 
         if request.session['userid']:
-            context = {"User": User.objects.get(id=request.session['userid'])}
             return redirect('/dash')
     except:
         return render(request, 'register.html')
@@ -42,11 +40,11 @@ def registering(request):
                 first_name = request.POST['first_name'],
                 last_name = request.POST['last_name'],
                 email = request.POST['email'].lower(), #email not case sensitive
-                isWorker = bool(request.POST['selectAccountType']),
+                isWorker =request.POST['selectAccountType'],
                 password = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
             )
-            print(request.POST['selectAccountType'])
             request.session['userid'] = User.objects.last().id
+            request.session['isworker'] = User.objects.last().isWorker
             return redirect('/dash')
     return redirect('/signin/register')
 
@@ -58,6 +56,7 @@ def logining(request):
             logged_user = user[0]
             if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
                 request.session['userid'] = logged_user.id
+                request.session['isworker'] = logged_user.isWorker
                 return redirect('/dash')
         else:
             messages.error(request, "Invalid credentials.", extra_tags='login')

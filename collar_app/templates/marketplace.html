@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Collar Marketplace</title>
+    {% include "partials/header.html" %}
+    <title>Marketplace</title>
 </head>
 <body>
     {% include "partials/navbar.html" %}
-    
+    <div class="container-fluid p-2">
+        <div class="row text-center p-2">
+            <h3 id="main_heading">Check out these services!</h3>   
+        </div>
+        <div id="market_table">
+            <div id="category_cards" class="row d-flex flex-wrap g-sm-5 text-center justify-content-center">
+            {% for category in categories %}
+                <a class="col-auto" href="/market/{{category.id}}" style="text-decoration: none">
+                    <div class="card text-white bg-success mb-3" style="max-width: 20rem; min-width: 20rem">
+                        <div class="card-header"><h3 class="m-1">{{ category.name}}</h3></div>
+                        <div class="card-body bg-info" style="min-height: 12rem">
+                            <h5 class="card-title">Total of {{ category.jobs.count}} services!</h5>
+                            <p class="card-text">{{ category.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

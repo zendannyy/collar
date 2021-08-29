@@ -6,7 +6,11 @@ app_name = 'collar'
 urlpatterns = [
     path('', views.index),
 	path('dash', views.dash),
-	# path('job/<int:id>', views.jobs),
+	path('market', views.market),
+	path('market/<int:categoryID>', views.marketCategory),
+	path('market/search', views.marketSearch),
+	path('market/search/ajax', views.marketSearchAjax),
+	path('edit/<int:id>', views.edit),
     path('logout', views.logout),
 	path('create', views.create),
 	path('destroy', views.destroy),

@@ -17,7 +17,7 @@
                     {% if messages %}
                         <ul class="messages">    
                             {% for message in messages %} 
-                                {% if 'register' in message.tags %}   
+                                {% if 'login' in message.tags %}   
                                 <li {% if message.tags %} class="{{ message.tags }} text-warning"{% endif %}>{{ message }}</li>    
                                 {% endif %}
                             {% endfor %}

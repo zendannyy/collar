@@ -16,11 +16,15 @@ class JobManager(models.Manager):
         return errors
 
 class Category(models.Model):
-    name = models.TextField(default='none')
+    name = models.CharField(max_length=45, default='none')
+    description = models.TextField(default='none', null=True)
     # jobs = the jobs that are in this category
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name}"
 
 class Job(models.Model):
     """related_name is from views create function"""
@@ -31,4 +35,7 @@ class Job(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.worker.first_name}:  {self.name}"
 
