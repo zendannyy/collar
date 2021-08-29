@@ -219,6 +219,11 @@ Temporary Items
 # secrets
 secrets.py
 
+# migrations 
+collar_app/migrations/
+
+login_reg_app/migrations/
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
