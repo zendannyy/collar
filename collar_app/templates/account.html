@@ -31,27 +31,34 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       Current Jobs
-                    </div>
-                    <!--For loop to print jobs-->
+                  <tbody>
+                    <!-- If statement to get user state -->
+                    <!-- For loop to print jobs -->
+                    {% for job in jobs %}
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">{{ job.category.name }}</li>
+                      <li class="list-group-item">{{ job.name }}  -- {{ job.duration }}</li>
+         
                     </ul>
-                  </div>
+                    {% endfor %}
+                  </tbody>
+                  </div> 
+            </div>
+      
 
                   <div class="card" style="width: 18rem;">
                     <div class="card-header">
                       My Skills
-                    </div>
-                    <!--For loop to print skills-->
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
+                    <tbody>
+                      <!--For loop to print skills
+                      placeholder for now-->
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Commercial and Residential Meters</li>
+                        <li class="list-group-item">Streetlights</li>
+                      </ul>
+                    </tbody>
                   </div>
-
+                  </div>
             </div>
 
             <div class = "row"> 
@@ -59,27 +66,29 @@
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
                           My Leads
-                        </div>
-                        <!--For loop to print leads-->
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
+                          <tbody>
+                            <!--For loop to print leads-->
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Panera on 10th</li>
+                              <li class="list-group-item">Greenhouse Facilities</li>
+                            </ul>
+                          </tbody>
                       </div>
+                      </div>
+                       
     
                       <div class="card" style="width: 18rem;">
                         <div class="card-header">
                           My Goals
+                          <tbody>
+                          <!--For loop to print goals-->
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">3 more clients by word of mouth next month</li>
+                            <li class="list-group-item">Average 4 jobs a month</li>
+                          </ul>
+                          </tbody>
                         </div>
-                        <!--For loop to print goals-->
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
                       </div>
-    
                 </div>
 
 
