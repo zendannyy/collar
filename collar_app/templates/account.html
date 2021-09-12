@@ -3,6 +3,7 @@
     {% include "partials/header.html" %}
 
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'validations_login.js' %}"></script>
     <title>My Account</title>
 </head>
@@ -12,11 +13,10 @@
     <h1>Welcome {{logged_user.first_name}}!</h1>
 
     <div class="container">
-
         <div class = "row">
             <div class="col md-6 mb-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="profile">
+                    <img src="static/profile.jpeg" class="card-img-top" height="200px" alt="profile">
                     <div class="card-body">
                         <p class="card-text">{{logged_user.first_name}} {{logged_user.last_name}}</p>
                         <!--If statement to determine work or user-->
@@ -61,7 +61,7 @@
                   </div>
             </div>
 
-            <div class = "row"> 
+            <!-- <div class = "row"> 
                 <div class = "col md-6 mb-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
@@ -77,7 +77,7 @@
                       </div>
                        
     
-                      <div class="card" style="width: 18rem;">
+                      <div class="card" style="width: 17rem;">
                         <div class="card-header">
                           My Goals
                           <tbody>
@@ -88,6 +88,14 @@
                           </ul>
                           </tbody>
                         </div>
+<<<<<<< HEAD
+=======
+                        <!--For loop to print goals-->
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Finish 2 more jobs than last month</li>
+                          <li class="list-group-item">3 clients through word of mouth this month</li>
+                        </ul>
+>>>>>>> mvp
                       </div>
                 </div>
 
