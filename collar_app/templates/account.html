@@ -3,6 +3,7 @@
     {% include "partials/header.html" %}
 
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'validations_login.js' %}"></script>
     <title>My Account</title>
 </head>
@@ -12,11 +13,10 @@
     <h1>Welcome {{logged_user.first_name}}!</h1>
 
     <div class="container">
-
         <div class = "row">
             <div class="col md-6 mb-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="profile">
+                    <img src="static/profile.jpeg" class="card-img-top" height="200px" alt="profile">
                     <div class="card-body">
                         <p class="card-text">{{logged_user.first_name}} {{logged_user.last_name}}</p>
                         <!--If statement to determine work or user-->
@@ -33,11 +33,12 @@
                       Current Jobs
                     </div>
                     <!--For loop to print jobs-->
+                    {% for job in jobs %}
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li>{{ job.name }} - {{ job.duration }}</li>
+                      <br>
                     </ul>
+                    {% endfor %}
                   </div>
 
                   <div class="card" style="width: 18rem;">
@@ -46,37 +47,35 @@
                     </div>
                     <!--For loop to print skills-->
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
+                      <li class="list-group-item">General Electric Residential</li>
+                      <li class="list-group-item">Smart Meters</li>
                     </ul>
                   </div>
 
             </div>
 
-            <div class = "row"> 
+            <!-- <div class = "row"> 
                 <div class = "col md-6 mb-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
                           My Leads
-                        </div>
+                        </div> -->
                         <!--For loop to print leads-->
-                        <ul class="list-group list-group-flush">
+                        <!-- <ul class="list-group list-group-flush">
                           <li class="list-group-item">Cras justo odio</li>
                           <li class="list-group-item">Dapibus ac facilisis in</li>
                           <li class="list-group-item">Vestibulum at eros</li>
                         </ul>
-                      </div>
+                      </div> -->
     
-                      <div class="card" style="width: 18rem;">
+                      <div class="card" style="width: 17rem;">
                         <div class="card-header">
                           My Goals
                         </div>
                         <!--For loop to print goals-->
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-item">Vestibulum at eros</li>
+                          <li class="list-group-item">Finish 2 more jobs than last month</li>
+                          <li class="list-group-item">3 clients through word of mouth this month</li>
                         </ul>
                       </div>
     
