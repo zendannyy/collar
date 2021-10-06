@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="welcome_logout">
+  <h2>Wall Messages</h2>
+    <h4>Welcome {{ request.session.first_name }} </h4>
+        <a href="/destroy" class="log_out">Log Out </a>
+</div>
+
+  <div class="post">
+      <form action="/create_message" method="POST">
+            {% csrf_token %}
+            <label>Post a Message </label> <input type="text" name="msg">
+            <button type="submit">Post a message</button>
+        </form>
+  </div>
+
+<div class="all_messages">
+    <h3>All Messages</h3>
+<!--    iterate through all messages and output user details
+         for msg in msgs -->
+    {% for message in messages %}
+    <p> {{ message.first_name }} </p>
+    <a href="create_message/{{message.id}}"><h3>{{ message.user }}</h3></a>
+    {% endfor %}
+
+</div>
+
+<div class="delete_message">
+    <h3></h3>
+
+</div>
+</body>
+</html>
