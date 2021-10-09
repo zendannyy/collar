@@ -31,11 +31,20 @@ class Job(models.Model):
     name = models.TextField(default='none')
     duration = models.TextField(default='none')
     worker = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, related_name='jobs', on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, related_name='job_category', on_delete=models.CASCADE, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.worker.first_name}:  {self.name}"
+
+
+class UserMessage(models.Model):
+	msg_text = models.TextField()
+	user = models.ForeignKey(User, related_name='messages',
+							 on_delete=models.CASCADE)
+
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 
