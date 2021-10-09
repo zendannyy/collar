@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
-from .models import Category, Job
+from .models import Category, Job, UserMessage
 from login_reg_app.models import User
 import bcrypt
 
@@ -85,7 +85,7 @@ def create(request):
 			'jobs': Job.objects.all(),
 		}
 		if request.session['isworker']: # this page only for worker users
-			return render(request, 'dashboard.html', context)
+			return render(request, 'create.html', context)
 		else:
 			return render(request, 'marketplace.html', context)
 	except:
@@ -117,6 +117,30 @@ def edit(request):
 			return render(request, 'marketplace.html', context)
 	except:
 		return redirect('/signin/login') # send to login page if not loggedin
+
+def create_message(request):
+	"""users can post a message and 'create' """
+	# if 'email' not in request.session:
+	# 	return redirect('/')
+	# first_name key here
+	context = {
+		# 'first_name': request.session['first_name'],
+		'user_messages': UserMessage.objects.all(),
+	}
+	return render(request, 'message.html', context)
+
+
+def message(request):
+	"""post message
+	dash > post message"""
+	print("creating message...")
+	if request.method == 'POST':
+		new_msg = UserMessage.objects.create(
+			msg_txt=request.POST['msg'],
+			user=User.objects.get(id=request.session['user'])
+		)
+		new_msg.save()
+	return redirect('/market/message')
 
 
 # redirects to login_reg_app to logout:
