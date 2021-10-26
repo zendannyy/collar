@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
-from .models import Category, Job, UserMessage
+from .models import Category, Job, UserMessage, Comment
 from login_reg_app.models import User
 import bcrypt
 
@@ -141,6 +141,20 @@ def message(request):
 		)
 		new_msg.save()
 	return redirect('/market/message')
+
+
+def comment(request):
+	"""post comments"""
+	if request.method == 'POST':
+		new_comment = Comment.objects.create(
+			comment_text=request.POST['comment'],
+			user=User.objects.get(id=request.session['user_id']),			# changed this from user to user_id
+			message=UserMessage.objects.get(id=request.POST['message_id'])		# changed this from message to message_id
+			# message=Message.objects.get(id=message_id)
+		)
+		new_comment.save()
+
+	return redirect('/create_message')
 
 
 # redirects to login_reg_app to logout:

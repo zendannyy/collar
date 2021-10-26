@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout', views.logout),
 	path('create', views.create),
 	path('create_message', views.create_message),
+	path('comment', views.comment),
 	path('account', views.account),
 	path('market/message', views.message),
 	path('destroy', views.destroy),
