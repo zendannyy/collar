@@ -41,10 +41,18 @@ class Job(models.Model):
 
 
 class UserMessage(models.Model):
-	msg_text = models.TextField()
+	msg = models.TextField()
 	user = models.ForeignKey(User, related_name='messages',
 							 on_delete=models.CASCADE)
 
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
+
+
+class Comment(models.Model):
+	comment_text = models.TextField(default='comment_text')
+	user = models.ForeignKey(User, related_name='comments', default=0, on_delete=models.CASCADE)
+	message = models.ForeignKey(UserMessage, related_name='comments', default='message', on_delete=models.CASCADE)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
