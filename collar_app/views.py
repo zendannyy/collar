@@ -155,7 +155,7 @@ def comment(request):
 		)
 		new_comment.save()
 
-	return redirect('/create_message')
+	return redirect('create_message')
 
 
 # redirects to login_reg_app to logout:
