@@ -13,7 +13,7 @@ def market(request):
 	"""market any logged in user sees"""
 	try: #check if customer is logged in. This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page.
 		context = {
-			"logged_user": User.objects.get(id=request.session['userid']),
+			"logged_user": User.objects.get(id=request.session['user_id']),
 			"jobs": Job.objects.all(),
 			"categories": Category.objects.all(),
 			}
@@ -61,7 +61,7 @@ def marketSearchAjax(request):
 
 def dash(request):
 	"""dashboard: only logged in worker user sees
-	check if customer is logged in. 
+	marketplace: logged in customer user sees. 
 	This is in a try/except clause because if the user is not logged in the app will crash. The except clause will bring the user back to the login page."""
 	try: 
 		context = {
@@ -80,7 +80,7 @@ def create(request):
 	brings in related_name """
 	try: # check if user logged in
 		context = {
-			'logged_user': User.objects.get(id=request.session['user_id']), # if user is not logged in then this will jump to except clause
+			'logged_user': User.objects.get(id=request.session['userid']), # if user is not logged in then this will jump to except clause
 			'users': User.objects.all(),
 			'jobs': Job.objects.all(),
 		}
@@ -107,7 +107,7 @@ def account(request):
 def edit(request):
 	try: # check if user logged in
 		context = {
-			'logged_user': User.objects.get(id=request.session['user_id']), # if user is not logged in then this will jump to except clause
+			'logged_user': User.objects.get(id=request.session['userid']), # if user is not logged in then this will jump to except clause
 			'users': User.objects.all(),
 			'jobs': Job.objects.all(),
 		}
@@ -126,6 +126,7 @@ def create_message(request):
 	context = {
 		# 'first_name': request.session['first_name'],
 		'user_messages': UserMessage.objects.all(),
+		'comments': UserMessage.objects.all(),
 	}
 	return render(request, 'message.html', context)
 
@@ -136,11 +137,11 @@ def message(request):
 	print("creating message...")
 	if request.method == 'POST':
 		new_msg = UserMessage.objects.create(
-			msg_txt=request.POST['msg'],
-			user=User.objects.get(id=request.session['user'])
+			msg=request.POST['msg'],
+			user=User.objects.get(id=request.session['userid'])		# changing to user_id 
 		)
 		new_msg.save()
-	return redirect('/market/message')
+	return redirect('/create_message')
 
 
 def comment(request):
