@@ -32,13 +32,11 @@
         <h3>All Messages</h3>
         <!--    iterate through all messages and output user details
             for msg in msgs -->
-        {% for message in user_messages %} says:
-        <p> {{ user_messages.first_name }} </p>
-        <a href="create_message/{{message.id}}">
-            <h4>{{ message.user }}</h4>
-        </a>
+        {% for message in user_messages %} 
+            {{ message.user.first_name }} says:
+            <p>{{ message.msg }}</p>
+            <a href="create_message/{{message.id}}"></a>
         {% endfor %}
-
     </div>
 
     <div class="comment" style="margin-top:50px">
