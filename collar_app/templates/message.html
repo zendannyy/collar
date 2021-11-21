@@ -35,21 +35,21 @@
         {% for message in user_messages %} says:
         <p> {{ user_messages.first_name }} </p>
         <a href="create_message/{{message.id}}">
-            <h3>{{ message.user }}</h3>
+            <h4>{{ message.user }}</h4>
         </a>
         {% endfor %}
 
     </div>
 
     <div class="comment" style="margin-top:50px">
-        <h3>All Comments</h3>
+        <h4>All Comments</h4>
         <form action="/comment" method="POST">
             <!-- this action is straight failing KeyError: 'user_id' -->
             <!--    had to change to comment-->
             {% csrf_token %}
             {% for comment in comments.comments.all %}
             {{ comments.user.first_name }} says:
-            <p>{{ comments.comment_text }}</p>
+            <p>{{ comments.user.comments }}</p>
             <p>{{ comments.msg }}</p>
 
             {% endfor %}
