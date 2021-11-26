@@ -131,7 +131,7 @@ def create_message(request):
 	return render(request, 'message.html', context)
 
 
-def message(request):
+def jobs(request):
 	"""post message
 	dash > post message"""
 	print("creating message...")
@@ -149,7 +149,7 @@ def comment(request):
 	if request.method == 'POST':
 		new_comment = Comment.objects.create(
 			comment_text=request.POST['comment'],
-			user=User.objects.get(id=request.session['user_id']),			# changed this from user to user_id
+			user=User.objects.get(id=request.session['userid']),			# changed this from user to user_id, changes to userid to match above method 
 			message=UserMessage.objects.get(id=request.POST['message_id'])		# changed this from message to message_id
 			# message=Message.objects.get(id=message_id)
 		)

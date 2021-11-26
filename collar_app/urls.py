@@ -16,6 +16,6 @@ urlpatterns = [
 	path('create_message', views.create_message),
 	path('comment', views.comment),
 	path('account', views.account),
-	path('message', views.message),
+	path('jobs', views.jobs),
 	path('destroy', views.destroy),
 ]
