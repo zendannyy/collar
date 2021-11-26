@@ -21,21 +21,23 @@
     </div>
 
     <div class="post">
-        <form action="/message" method="POST">
+        <!-- <form action="/message" method="POST"> -->
+        <form action="/jobs" method="POST">
             {% csrf_token %}
-            <label>Post a Message </label> <input type="text" name="msg" id="msg">
-            <button type="submit">Post a message</button>
+            <label>Post a New Job Message </label> <input type="text" name="msg" id="msg">
+            <button type="submit">Post a New Job </button>
         </form>
     </div>
 
-    <div class="all_messages">
-        <h3>All Messages</h3>
+    <div class="all_messages" style="margin-top: 20px;">
+        <!-- <h3>All Messages</h3> -->
+        <h3>New Jobs</h3>
         <!--    iterate through all messages and output user details
             for msg in msgs -->
-        {% for message in user_messages %} 
-            {{ message.user.first_name }} says:
-            <p>{{ message.msg }}</p>
-            <a href="create_message/{{message.id}}"></a>
+        {% for job in user_messages %} 
+            {{ job.user.first_name }} says:
+            <p>{{ job.msg }}</p>
+            <a href="create_message/{{job.id}}"></a>
         {% endfor %}
     </div>
 
@@ -46,9 +48,9 @@
             <!--    had to change to comment-->
             {% csrf_token %}
             {% for comment in comments.comments.all %}
-            {{ comments.user.first_name }} says:
-            <p>{{ comments.user.comments }}</p>
-            <p>{{ comments.msg }}</p>
+                {{ comments.user.first_name }} says:
+                <p>{{ comments.user.comments }}</p>
+                <p>{{ comments.comment_text }}</p>
 
             {% endfor %}
             <input type="hidden" name="message_id" value="{{ message.id }}">
